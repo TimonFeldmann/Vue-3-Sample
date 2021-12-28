@@ -7,16 +7,19 @@ export const shoppingStore = defineStore("shoppingList", {
         shoppingList: new ShoppingList(),
     }),
     getters: {
-        itemString: (state) =>
-            state.shoppingList.shoppingItems.length
-                ? state.shoppingList.shoppingItems.reduce(
-                      (previous, current) =>
-                          `${previous} Name: ${current.name}, Price: $${current.price}<br>`,
-                      ""
-                  )
-                : null,
+        shoppingItems(): ShoppingItem[] {
+            return this.shoppingList.shoppingItems;
+        },
     },
     actions: {
+        async getShoppingList() {
+            const shoppingList =
+                await ShoppingListApiClientInstance.GetShoppingList(
+                    "c041da71-be3d-4ad7-8efd-0cdeb61676a3"
+                );
+
+            this.setShoppingList(shoppingList);
+        },
         async createItem() {
             const shoppingItem =
                 await ShoppingListApiClientInstance.CreateShoppingItem(
@@ -25,8 +28,22 @@ export const shoppingStore = defineStore("shoppingList", {
 
             this.addItem(shoppingItem);
         },
-        addItem(item: ShoppingItem) {
-            this.shoppingList.AddItem(item);
+        async updateItem(shoppingItem: ShoppingItem) {
+            if (shoppingItem.id !== null) {
+                const updatedShoppingItem =
+                    await ShoppingListApiClientInstance.UpdateShoppingItem(
+                        this.shoppingList.id,
+                        shoppingItem.id,
+                        shoppingItem
+                    );
+
+                return shoppingItem;
+            }
+
+            return null;
+        },
+        addItem(shoppingItem: ShoppingItem) {
+            this.shoppingList.AddItem(shoppingItem);
         },
         setShoppingList(shoppingList: ShoppingList) {
             this.shoppingList = new ShoppingList(shoppingList);

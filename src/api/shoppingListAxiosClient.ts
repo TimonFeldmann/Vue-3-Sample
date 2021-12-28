@@ -1,4 +1,8 @@
-import { ShoppingItem, ShoppingList } from "@/classes/shopping";
+import {
+    ShoppingItem,
+    ShoppingList,
+    CreateUpdateShoppingItemDto,
+} from "@/classes/shopping";
 import axios, { AxiosInstance } from "axios";
 
 class ShoppingListApiClient {
@@ -25,7 +29,20 @@ class ShoppingListApiClient {
     ): Promise<ShoppingItem> {
         const shoppingItem = await this.axiosClient.post<ShoppingItem>(
             `/Item/${shoppingListId}/`,
-            new ShoppingItem({ name: "UI Item", price: 5 })
+            new ShoppingItem()
+        );
+
+        return shoppingItem.data;
+    }
+
+    public async UpdateShoppingItem(
+        shoppingListId: string,
+        shoppingItemId: string,
+        shoppingItemDto: CreateUpdateShoppingItemDto
+    ) {
+        const shoppingItem = await this.axiosClient.put<ShoppingItem>(
+            `/Item/${shoppingListId}/${shoppingItemId}`,
+            shoppingItemDto
         );
 
         return shoppingItem.data;
