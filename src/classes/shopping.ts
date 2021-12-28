@@ -4,7 +4,7 @@ export type CreateUpdateShoppingItemDto = {
 };
 
 export class ShoppingItem {
-    public id: string | null = null;
+    public id: string = "";
     public name: string = "";
     public price: number = 0;
 

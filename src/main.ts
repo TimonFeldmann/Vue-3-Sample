@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 import { createPinia } from "pinia";
 import Main from "@/views/Main.vue";
-import ShoppingList from "@/components/ShoppingList.vue";
+import ShoppingList from "@/views/ShoppingList.vue";
 
 const routes = [
     {

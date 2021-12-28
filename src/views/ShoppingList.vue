@@ -26,11 +26,13 @@ onMounted(async () => {
     <div class="shopping-list-container">
         <div class="shopping-list-title">{{ pageTitle }}</div>
         <div class="shopping-item-container">
-            <ShoppingItem
-                v-for="shoppingItem in shoppingItems"
-                :shopping-item="shoppingItem"
-                @updated=""
-            ></ShoppingItem>
+            <transition-group name="fade">
+                <ShoppingItem
+                    v-for="shoppingItem in shoppingItems"
+                    :shopping-item="shoppingItem"
+                    :key="shoppingItem.id"
+                ></ShoppingItem>
+            </transition-group>
         </div>
         <div class="shopping-list-add-item" @click="createShoppingItem">
             Create Shopping Item
@@ -62,11 +64,29 @@ onMounted(async () => {
         align-items: center;
         justify-content: center;
         font-weight: bold;
-        background-color: rgb(177, 230, 177);
+        background-color: #42b883;
         width: 15rem;
         height: 3rem;
         box-shadow: 3px 3px 3px lightgrey;
         margin: 1rem;
+    }
+}
+
+.fade-enter-active {
+    animation: fade-in 1s;
+}
+
+.fade-leave-active {
+    animation: fade-in 1s reverse;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        background-color: #42b883;
+    }
+    to {
+        opacity: 1;
     }
 }
 </style>
