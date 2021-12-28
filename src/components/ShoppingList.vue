@@ -1,12 +1,16 @@
 <script setup lang="ts">
-import { actions, mutations, getters } from "@/stores/shoppingList";
-import { onMounted, ref, toRef } from "vue";
+// import { actions, mutations, getters } from "@/stores/shoppingList";
+import { shoppingStore } from "@/stores/shoppingListPinia";
+import { storeToRefs } from "pinia";
+import { onMounted } from "vue";
 import { ShoppingListApiClientInstance } from "@/api/shoppingListAxiosClient";
 
-const itemString = getters.itemString;
+const store = shoppingStore();
+
+const { itemString } = storeToRefs(store);
 
 async function createShoppingItem() {
-    await actions.createItem();
+    await store.createItem();
 }
 
 defineProps<{
@@ -18,7 +22,7 @@ onMounted(async () => {
         "c041da71-be3d-4ad7-8efd-0cdeb61676a3"
     );
 
-    mutations.setShoppingList(shoppingList);
+    store.setShoppingList(shoppingList);
 });
 </script>
 

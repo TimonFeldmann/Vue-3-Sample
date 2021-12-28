@@ -1,5 +1,6 @@
 import { createApp } from "vue";
 import { createRouter, createWebHashHistory } from "vue-router";
+import { createPinia } from "pinia";
 import Main from "@/views/Main.vue";
 import ShoppingList from "@/components/ShoppingList.vue";
 
@@ -24,6 +25,7 @@ const router = createRouter({
 
 const app = createApp({});
 
+app.use(createPinia());
 app.use(router);
 
 app.mount("#app");
