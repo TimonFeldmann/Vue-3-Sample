@@ -11,14 +11,14 @@ class ShoppingListApiClient {
     constructor() {
         this.axiosClient = axios.create({
             baseURL: "http://localhost:5200",
-            timeout: 1000,
+            timeout: 10000,
             headers: { "X-Custom-Header": "foobar" },
         });
     }
 
     public async GetShoppingList(userId: string): Promise<ShoppingList> {
         const shoppingList = await this.axiosClient.get<ShoppingList>(
-            `/User/${userId}`
+            `ShoppingList/User/${userId}`
         );
 
         return shoppingList.data;
@@ -28,7 +28,7 @@ class ShoppingListApiClient {
         shoppingListId: string
     ): Promise<ShoppingItem> {
         const shoppingItem = await this.axiosClient.post<ShoppingItem>(
-            `/Item/${shoppingListId}/`,
+            `ShoppingList/${shoppingListId}/Item`,
             new ShoppingItem()
         );
 
@@ -41,7 +41,7 @@ class ShoppingListApiClient {
         shoppingItemDto: CreateUpdateShoppingItemDto
     ) {
         const shoppingItem = await this.axiosClient.put<ShoppingItem>(
-            `/Item/${shoppingListId}/${shoppingItemId}`,
+            `ShoppingList/${shoppingListId}/Item/${shoppingItemId}`,
             shoppingItemDto
         );
 
