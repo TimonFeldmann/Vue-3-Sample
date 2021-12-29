@@ -29,18 +29,14 @@ export const shoppingStore = defineStore("shoppingList", {
             this.addItem(shoppingItem);
         },
         async updateItem(shoppingItem: ShoppingItem) {
-            if (shoppingItem.id !== null) {
-                const updatedShoppingItem =
-                    await ShoppingListApiClientInstance.UpdateShoppingItem(
-                        this.shoppingList.id,
-                        shoppingItem.id,
-                        shoppingItem
-                    );
+            const updatedShoppingItem =
+                await ShoppingListApiClientInstance.UpdateShoppingItem(
+                    this.shoppingList.id,
+                    shoppingItem.id,
+                    shoppingItem
+                );
 
-                return shoppingItem;
-            }
-
-            return null;
+            return updatedShoppingItem;
         },
         addItem(shoppingItem: ShoppingItem) {
             this.shoppingList.AddItem(shoppingItem);

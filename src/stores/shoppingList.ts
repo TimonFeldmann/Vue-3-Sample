@@ -1,4 +1,5 @@
 // Deprecated - Use shoppingListPinia instead.
+
 import { reactive, computed } from "vue";
 import { ShoppingList, ShoppingItem } from "@/classes/shopping";
 import { ShoppingListApiClientInstance } from "@/api/shoppingListAxiosClient";
