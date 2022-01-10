@@ -2,6 +2,7 @@
 import { ShoppingItem } from "@/classes/shopping";
 import { shoppingStore } from "@/stores/shoppingListPinia";
 
+//@ts-ignore
 const store = shoppingStore();
 
 const props = defineProps<{
@@ -20,6 +21,7 @@ function updateShoppingItem() {
             <input
                 @blur="updateShoppingItem"
                 v-model="shoppingItem.name"
+                id="nameValue"
                 class="value"
             />
         </div>
@@ -28,6 +30,7 @@ function updateShoppingItem() {
             <input
                 @blur="updateShoppingItem"
                 v-model="shoppingItem.price"
+                id="priceValue"
                 class="value"
             />
         </div>
