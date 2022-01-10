@@ -28,9 +28,7 @@ describe('ShoppingItem.vue', () => {
       }
     });
 
-    await wrapper.vm.$forceUpdate();
-
-    expect((wrapper.find("#nameValue").element as HTMLInputElement).value === "Mustard");
-    expect((wrapper.find("#priceValue").element as HTMLInputElement).value === "3");
+    expect((wrapper.find("#nameValue").element as HTMLInputElement).value).toBe("Mustard");
+    expect((wrapper.find("#priceValue").element as HTMLInputElement).value).toBe("3");
   })
 });
