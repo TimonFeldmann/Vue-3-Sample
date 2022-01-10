@@ -1,19 +1,20 @@
 import { setActivePinia, createPinia } from 'pinia'
 import { mount } from '@vue/test-utils'
+
 import ShoppingItem from '@/components/ShoppingItem.vue';
 import { ShoppingItem as ShoppingItemClass } from '@/classes/Shopping';
-import { config } from '@vue/test-utils'
+import _default from '@vue/test-utils/dist/constants/dom-events';
 
-// Hides irrelevant Pinia warning. 
-config.global.config.warnHandler = () => {}
+let plugins = [] as any[];
 
 describe('ShoppingItem.vue', () => {
   beforeEach(() => {
-    // creates a fresh pinia and make it active so it's automatically picked
-    // up by any useStore() call without having to pass it to it:
-    // `useStore(pinia)`
-    setActivePinia(createPinia())
-  })
+    const pinia = createPinia();
+
+    plugins = [pinia];
+
+    setActivePinia(pinia);
+  });
 
   it('renders properties', async () => {
     const shoppingItem = new ShoppingItemClass({
@@ -23,6 +24,9 @@ describe('ShoppingItem.vue', () => {
     });
 
     const wrapper = await mount(ShoppingItem, {
+      global: {
+        plugins,
+      },
       props: {
         shoppingItem
       }
