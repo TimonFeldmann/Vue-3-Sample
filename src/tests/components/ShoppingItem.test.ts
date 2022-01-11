@@ -3,7 +3,6 @@ import { mount } from '@vue/test-utils'
 
 import ShoppingItem from '@/components/ShoppingItem.vue';
 import { ShoppingItem as ShoppingItemClass } from '@/classes/Shopping';
-import _default from '@vue/test-utils/dist/constants/dom-events';
 
 let plugins = [] as any[];
 
