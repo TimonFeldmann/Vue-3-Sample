@@ -1,31 +1,23 @@
 import { createApp } from "vue";
-import { createRouter, createWebHashHistory } from "vue-router";
 import { createPinia } from "pinia";
-import Main from "@/views/Main.vue";
-import ShoppingList from "@/views/ShoppingList.vue";
+import { router } from "@/router";
 
-const routes = [
-    {
-        path: "/",
-        component: Main,
-        children: [
-            {
-                path: "shopping-list",
-                component: ShoppingList,
-                props: { pageTitle: "Shopping List" },
-            },
-        ],
-    },
-];
+import {
+    GridComponent,
+    ColumnsDirective,
+    ColumnDirective,
+} from "@syncfusion/ej2-vue-grids";
 
-const router = createRouter({
-    history: createWebHashHistory(),
-    routes,
-});
+import App from "@/App.vue";
 
-const app = createApp({});
+// Can't pass an empty objecct here as it breaks the provide / inject feature for SyncFusion.
+const app = createApp(App);
 
 app.use(createPinia());
+app.component("ejs-grid", GridComponent);
+app.component("e-columns", ColumnsDirective);
+app.component("e-column", ColumnDirective);
+
 app.use(router);
 
 app.mount("#app");

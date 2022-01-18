@@ -1,30 +1,30 @@
 <script setup lang="ts">
-// import { actions, mutations, getters } from "@/stores/shoppingList";
 import { shoppingStore } from "@/stores/shoppingListPinia";
+import { userStore } from "@/stores/userPinia";
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
-import ShoppingItem from "@/components/ShoppingItem.vue";
+import ShoppingItem from "@/components/ShoppingList/ShoppingItem.vue";
 
-const store = shoppingStore();
+const shoppingStoreInstance = shoppingStore();
+const userStoreInstance = userStore();
 
-const { shoppingItems } = storeToRefs(store);
+const { shoppingItems } = storeToRefs(shoppingStoreInstance);
+const { user } = storeToRefs(userStoreInstance);
 
 async function createShoppingItem() {
-    await store.createItem();
+    await shoppingStoreInstance.createItem();
 }
 
-defineProps<{
-    pageTitle: string;
-}>();
-
 onMounted(async () => {
-    store.getShoppingList();
+    shoppingStoreInstance.getShoppingListForUser(user.value.id);
 });
 </script>
 
 <template>
     <div class="shopping-list-container">
-        <div class="shopping-list-title">{{ pageTitle }}</div>
+        <div class="shopping-list-container__header">
+            {{ user.name }}'s Shopping List
+        </div>
         <div class="shopping-item-container">
             <transition-group name="fade">
                 <ShoppingItem
@@ -45,8 +45,9 @@ onMounted(async () => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    .shopping-list-title {
+    justify-content: flex-start;
+
+    &__header {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -60,11 +61,12 @@ onMounted(async () => {
     }
 
     .shopping-list-add-item {
+        color: white;
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: bold;
-        background-color: #42b883;
+        background-color: #41b883;
         width: 15rem;
         height: 3rem;
         box-shadow: 3px 3px 3px lightgrey;

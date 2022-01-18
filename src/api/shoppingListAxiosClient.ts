@@ -3,6 +3,7 @@ import {
     ShoppingList,
     CreateUpdateShoppingItemDto,
 } from "@/classes/shopping";
+import { User } from "@/classes/user";
 import axios, { AxiosInstance } from "axios";
 
 class ShoppingListApiClient {
@@ -16,7 +17,13 @@ class ShoppingListApiClient {
         });
     }
 
-    public async GetShoppingList(userId: string): Promise<ShoppingList> {
+    public async GetUser(userId): Promise<User> {
+        const user = await this.axiosClient.get<User>(`User/${userId}`);
+
+        return user.data;
+    }
+
+    public async GetShoppingListForUser(userId: string): Promise<ShoppingList> {
         const shoppingList = await this.axiosClient.get<ShoppingList>(
             `ShoppingList/User/${userId}`
         );

@@ -12,11 +12,9 @@ export const shoppingStore = defineStore("shoppingList", {
         },
     },
     actions: {
-        async getShoppingList() {
+        async getShoppingListForUser(id: string) {
             const shoppingList =
-                await ShoppingListApiClientInstance.GetShoppingList(
-                    "c041da71-be3d-4ad7-8efd-0cdeb61676a3"
-                );
+                await ShoppingListApiClientInstance.GetShoppingListForUser(id);
 
             this.setShoppingList(shoppingList);
         },
