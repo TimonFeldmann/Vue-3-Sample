@@ -1,16 +1,14 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { storeToRefs } from "pinia";
 import { Page, Filter, Sort, DetailRow } from "@syncfusion/ej2-vue-grids";
 import { userStore } from "@/stores/userPinia";
-
-let initialized = ref(false);
 
 export default defineComponent({
     provide: {
         grid: [Page, Filter, Sort, DetailRow],
     },
     setup() {
+        const initialized = ref(false);
         const store = userStore();
 
         // Can't use an async setup method in the root Vue component since <suspense> can't be used here.

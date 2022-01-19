@@ -70,7 +70,7 @@ const childGrid = {
 </template>
 
 <style lang="scss">
-.component-library-container {
+.report-container {
     display: flex;
     align-items: flex-start;
     justify-content: center;

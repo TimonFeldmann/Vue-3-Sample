@@ -1,7 +1,7 @@
 import App from "@/App.vue";
 import Navigation from "@/views/Navigation.vue";
 import ShoppingList from "@/views/ShoppingList.vue";
-import ShoppingListReport from "@/views/ShoppingListReport.vue";
+import ShoppingListReports from "@/views/ShoppingListReports.vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 
 const routes = [
@@ -22,7 +22,7 @@ const routes = [
             {
                 name: "Shopping List Report",
                 path: "shopping-list/report",
-                component: ShoppingListReport,
+                component: ShoppingListReports,
             },
         ],
     },
