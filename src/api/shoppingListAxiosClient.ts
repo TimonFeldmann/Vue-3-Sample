@@ -17,7 +17,7 @@ class ShoppingListApiClient {
         });
     }
 
-    public async GetUser(userId): Promise<User> {
+    public async GetUser(userId: string): Promise<User> {
         const user = await this.axiosClient.get<User>(`User/${userId}`);
 
         return user.data;

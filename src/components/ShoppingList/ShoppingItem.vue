@@ -29,6 +29,7 @@ function resetContainerClass() {
             <input
                 @blur="updateShoppingItem"
                 v-model="shoppingItem.name"
+                id="nameValue"
                 class="value"
             />
         </div>
@@ -37,6 +38,7 @@ function resetContainerClass() {
             <input
                 @blur="updateShoppingItem"
                 v-model="shoppingItem.price"
+                id="priceValue"
                 class="value"
             />
         </div>
