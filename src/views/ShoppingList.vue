@@ -9,21 +9,21 @@ const shoppingStoreInstance = shoppingStore();
 const userStoreInstance = userStore();
 
 const { shoppingItems } = storeToRefs(shoppingStoreInstance);
-const { user } = storeToRefs(userStoreInstance);
+const { name } = storeToRefs(userStoreInstance);
 
 async function createShoppingItem() {
     await shoppingStoreInstance.createItem();
 }
 
 onMounted(async () => {
-    shoppingStoreInstance.getShoppingListForUser(user.value.id);
+    await shoppingStoreInstance.getShoppingListForUser(user.value.id);
 });
 </script>
 
 <template>
     <div class="shopping-list-container">
         <div class="shopping-list-container__header">
-            {{ user.name }}'s Shopping List
+            {{ name }}'s Shopping List
         </div>
         <div class="shopping-item-container">
             <transition-group name="fade">
