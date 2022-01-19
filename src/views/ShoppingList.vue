@@ -9,7 +9,7 @@ const shoppingStoreInstance = shoppingStore();
 const userStoreInstance = userStore();
 
 const { shoppingItems } = storeToRefs(shoppingStoreInstance);
-const { name } = storeToRefs(userStoreInstance);
+const { name, user } = storeToRefs(userStoreInstance);
 
 async function createShoppingItem() {
     await shoppingStoreInstance.createItem();

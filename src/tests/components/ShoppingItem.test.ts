@@ -2,7 +2,7 @@ import { setActivePinia, createPinia } from "pinia";
 import { mount } from "@vue/test-utils";
 
 import ShoppingItem from "@/components/ShoppingList/ShoppingItem.vue";
-import { ShoppingItem as ShoppingItemClass } from "@/classes/Shopping";
+import { ShoppingItem as ShoppingItemClass } from "@/classes/shopping";
 
 let plugins = [] as any[];
 
