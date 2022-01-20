@@ -46,15 +46,15 @@ export default defineComponent({
 </style>
 
 <style lang="scss">
-@import "../node_modules/@syncfusion/ej2-base/styles/tailwind-dark.css";
-@import "../node_modules/@syncfusion/ej2-buttons/styles/tailwind-dark.css";
-@import "../node_modules/@syncfusion/ej2-calendars/styles/tailwind-dark.css";
-@import "../node_modules/@syncfusion/ej2-dropdowns/styles/tailwind-dark.css";
-@import "../node_modules/@syncfusion/ej2-inputs/styles/tailwind-dark.css";
-@import "../node_modules/@syncfusion/ej2-navigations/styles/tailwind-dark.css";
-@import "../node_modules/@syncfusion/ej2-popups/styles/tailwind-dark.css";
-@import "../node_modules/@syncfusion/ej2-splitbuttons/styles/tailwind-dark.css";
-@import "../node_modules/@syncfusion/ej2-vue-grids/styles/tailwind-dark.css";
+@import "@syncfusion/ej2-base/styles/tailwind-dark.css";
+@import "@syncfusion/ej2-buttons/styles/tailwind-dark.css";
+@import "@syncfusion/ej2-calendars/styles/tailwind-dark.css";
+@import "@syncfusion/ej2-dropdowns/styles/tailwind-dark.css";
+@import "@syncfusion/ej2-inputs/styles/tailwind-dark.css";
+@import "@syncfusion/ej2-navigations/styles/tailwind-dark.css";
+@import "@syncfusion/ej2-popups/styles/tailwind-dark.css";
+@import "@syncfusion/ej2-splitbuttons/styles/tailwind-dark.css";
+@import "@syncfusion/ej2-vue-grids/styles/tailwind-dark.css";
 
 body,
 #appContainer {
